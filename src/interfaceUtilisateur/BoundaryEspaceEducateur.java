@@ -4,14 +4,14 @@ package interfaceUtilisateur;
 import gestion.CompteController;
 import gestion.EnfantController;
 import gestion.GestionnaireIncompatibilité;
-import gestion.DataStorage;
 import modele.Enfant;
-import modele.Parent;
 import modele.Educateur;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BoundaryEspaceEducateur {
-	private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     private CompteController compteController;
     private EnfantController enfantController;
     private GestionnaireIncompatibilité gestionnaireIncompatibilite;
@@ -69,7 +69,7 @@ public class BoundaryEspaceEducateur {
     }
 
     private void gererActivites() {
-    	System.out.println("\n--- Gérer les Activités ---");
+        System.out.println("\n--- Gérer les Activités ---");
         System.out.print("Nom de l'enfant : ");
         String nomEnfant = scanner.nextLine();
 
@@ -82,29 +82,67 @@ public class BoundaryEspaceEducateur {
         System.out.println("Allergies : " + enfant.getAllergies());
         System.out.println("Problèmes de santé : " + enfant.getProblemesDeSante());
 
-        String[] activitesDisponibles = {"Natation", "Cuisine", "Danse"};
-        for (String activite : activitesDisponibles) {
-            if (gestionnaireIncompatibilite.estCompatible(activite, enfant)) {
-                System.out.println("Activité disponible : " + activite);
-            } else {
-                System.out.println("Activité non disponible : " + activite);
-            }
+        // Nettoyage des guillemets dans le nom de l'éducateur
+        String nomEducateur = educateur.getNom().trim().replaceAll("^\"|\"$", "");
+        System.out.println("Nom de l'éducateur connecté : " + nomEducateur);
+
+        // Détection de la catégorie en fonction de l'éducateur
+        if (nomEducateur.equalsIgnoreCase("Medhi Souaki")) {
+            System.out.println("Catégorie détectée : Sorties en Forêt et Aquatiques");
+            System.out.println("Sortie Forêt :");
+            afficherActivitesParJour("Sorties en Forêt", enfant);
+            System.out.println("\nSortie Aquatique :");
+            afficherActivitesParJour("Sorties Aquatiques", enfant);
+
+        } else if (nomEducateur.equalsIgnoreCase("Christelle Meudon")) {
+            System.out.println("Catégorie détectée : Activités Culinaires");
+            afficherActivitesParJour("Activités Culinaires", enfant);
+
+        } else if (nomEducateur.equalsIgnoreCase("Julie Cazeneuve")) {
+            System.out.println("Catégorie détectée : Activités Récréatives");
+            afficherActivitesParJour("Activités Récréatives", enfant);
+
+        } else {
+            System.out.println("Erreur : Le nom de l'éducateur '" + nomEducateur + "' ne correspond à aucune catégorie définie.");
+            return;
         }
 
+        // Choix de l'activité
         System.out.print("Choisissez une activité (ou 0 pour retour) : ");
         String choix = scanner.nextLine();
         if (!choix.equals("0")) {
             if (gestionnaireIncompatibilite.estCompatible(choix, enfant)) {
                 enfant.ajouterActivite(choix);
-                System.out.println("Activité \"" + choix + "\" ajoutée pour l'enfant \"" + nomEnfant + "\".");
+                System.out.println("Activité \"" + choix + "\" ajoutée pour l'enfant \"" + enfant.getNom() + "\".");
             } else {
-                System.out.println("Impossible d'ajouter l'activité à cause d'une incompatibilité.");
+                System.out.println("Impossible d'ajouter l'activité : activité non compatible ou inexistante.");
             }
         }
     }
 
+
+
+    
+    private void afficherActivitesParJour(String categorie, Enfant enfant) {
+        List<String> activitesCompatibles = gestionnaireIncompatibilite.getActivitesCompatiblesParCategorie(categorie, enfant);
+
+        int index = 0;
+        List<String> jours = List.of("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi");
+
+        for (String jour : jours) {
+            if (index < activitesCompatibles.size()) {
+                System.out.println("Activité disponible " + jour + " : " + activitesCompatibles.get(index));
+                index++;
+            } else {
+                System.out.println("Activité disponible " + jour + " : Aucune activité compatible.");
+            }
+        }
+    }
+
+
+
     private void gererBilans() {
-        System.out.println("\n--- Gérer les Bilans ---");
+    	System.out.println("\n--- Gérer les Bilans ---");
         System.out.print("Nom de l'enfant : ");
         String nomEnfant = scanner.nextLine();
 
@@ -121,10 +159,8 @@ public class BoundaryEspaceEducateur {
         System.out.println("Bilan enregistré avec succès pour " + enfant.getNom());
     }
 
-
-
     private void gererAllergies() {
-        System.out.println("\n--- Gérer les Allergies ---");
+    	System.out.println("\n--- Gérer les Allergies ---");
         System.out.print("Nom de l'enfant : ");
         String nomEnfant = scanner.nextLine();
         Enfant enfant = enfantController.trouverEnfantParNom(nomEnfant);
@@ -146,7 +182,7 @@ public class BoundaryEspaceEducateur {
     }
 
     private void ajouterModifierAllergie() {
-        System.out.println("\n--- Ajouter ou Modifier une Allergie ---");
+    	System.out.println("\n--- Ajouter ou Modifier une Allergie ---");
         System.out.print("Nom de l'enfant : ");
         String nomEnfant = scanner.nextLine();
         Enfant enfant = enfantController.trouverEnfantParNom(nomEnfant);
@@ -168,7 +204,7 @@ public class BoundaryEspaceEducateur {
     }
 
     private void ajouterModifierProblemeDeSante() {
-        System.out.println("\n--- Ajouter ou Modifier un Problème de Santé ---");
+    	System.out.println("\n--- Ajouter ou Modifier un Problème de Santé ---");
         System.out.print("Nom de l'enfant : ");
         String nomEnfant = scanner.nextLine();
         Enfant enfant = enfantController.trouverEnfantParNom(nomEnfant);
@@ -184,4 +220,5 @@ public class BoundaryEspaceEducateur {
         enfant.ajouterProblemeDeSante(probleme);
         System.out.println("Le problème de santé \"" + probleme + "\" a été ajouté/modifié pour l'enfant \"" + nomEnfant + "\".");
     }
-}
+    }
+

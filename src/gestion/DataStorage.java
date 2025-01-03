@@ -11,108 +11,131 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataStorage {
- private List<Parent> parents = new ArrayList<>();
- private List<Educateur> educateurs = new ArrayList<>();
+    private List<Parent> parents = new ArrayList<>();
+    private List<Educateur> educateurs = new ArrayList<>();
+    private EnfantController enfantController;
 
- // Charger les données des parents depuis un fichier CSV
- public void chargerDonneesParentsDepuisCSV(String cheminFichier) throws IOException {
-     BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
-     String ligne;
-     boolean isFirstLine = true;
+    public DataStorage(EnfantController enfantController) {
+        this.enfantController = enfantController;
+    }
 
-     while ((ligne = reader.readLine()) != null) {
-         if (isFirstLine) {
-             isFirstLine = false;
-             continue;
-         }
-         try {
-             String[] donnees = ligne.split(",");
-             String nomParent = donnees[1].trim();
-             String emailParent = donnees[2].trim();
-             String motDePasse = donnees[12].trim();
-             String nomEnfant = donnees[3].trim();
-             String allergies = String.join(", ", donnees[4].trim(), donnees[5].trim(), donnees[6].trim(), donnees[7].trim());
-             String regimeAlimentaire = donnees[8].trim();
-             String problemeDeSante = donnees[9].trim();
+    // Charger les données des parents depuis un fichier CSV
+    public void chargerDonneesParentsDepuisCSV(String cheminFichier) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
+        String ligne;
+        boolean isFirstLine = true;
 
-             Parent parent = trouverParentParEmail(emailParent);
-             if (parent == null) {
-                 parent = new Parent(nomParent, emailParent, motDePasse);
-                 parents.add(parent);
-             }
+        while ((ligne = reader.readLine()) != null) {
+            if (isFirstLine) {
+                isFirstLine = false;
+                continue;
+            }
+            try {
+                String[] donnees = ligne.split(",");
+                if (donnees.length < 13) {
+                    System.err.println("Ligne ignorée : nombre insuffisant de colonnes -> " + ligne);
+                    continue;
+                }
 
-             Enfant enfant = new Enfant(nomEnfant, allergies, regimeAlimentaire);
-             enfant.ajouterActivite("Problème de santé : " + problemeDeSante);
-             parent.ajouterEnfant(enfant);
-         } catch (Exception e) {
-             System.err.println("Erreur lors du traitement de la ligne : " + ligne);
-         }
-     }
-     reader.close();
- }
+                String nomParent = donnees[1].trim();
+                String emailParent = donnees[2].trim();
+                String motDePasse = donnees[12].trim();
+                String nomEnfant = donnees[3].trim();
 
- public void chargerDonneesEducateursDepuisCSV(String cheminFichier) throws IOException {
-     BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
-     String ligne;
-     boolean isFirstLine = true;
+                List<String> allergiesList = List.of(donnees[4].trim(), donnees[5].trim(), donnees[6].trim(), donnees[7].trim());
+                String regimeAlimentaire = donnees[8].trim();
+                String problemeDeSante = donnees[9].trim();
 
-     while ((ligne = reader.readLine()) != null) {
-         if (isFirstLine) {
-             isFirstLine = false;
-             continue;
-         }
-         try {
-             String[] donnees = ligne.split(",");
-             String nomEducateur = donnees[1].trim(); // Colonne "Educateur Nom"
-             String emailEducateur = donnees[2].trim(); // Colonne "Mail"
-             String motDePasse = donnees[3].trim(); // Colonne "mot de passe " (avec espace)
+                Parent parent = trouverParentParEmail(emailParent);
+                if (parent == null) {
+                    parent = new Parent(nomParent, emailParent, motDePasse);
+                    parents.add(parent);
+                }
 
-             Educateur educateur = new Educateur(nomEducateur, emailEducateur, motDePasse);
-             educateurs.add(educateur);
-         } catch (Exception e) {
-             System.err.println("Erreur lors du traitement de la ligne : " + ligne);
-         }
-     }
-     reader.close();
- }
+                Enfant enfant = new Enfant(nomEnfant, allergiesList, regimeAlimentaire);
+                enfant.ajouterProblemeDeSante(problemeDeSante);
+                parent.ajouterEnfant(enfant);
 
- public Parent trouverParentParEmail(String email) {
-     for (Parent parent : parents) {
-         if (parent.getEmail().equals(email)) {
-             return parent;
-         }
-     }
-     return null;
- }
+                if (enfantController != null) {
+                    enfantController.ajouterEnfant(enfant);
+                }
 
- public Educateur trouverEducateurParEmail(String email) {
-     for (Educateur educateur : educateurs) {
-         if (educateur.getEmail().equals(email)) {
-             return educateur;
-         }
-     }
-     return null;
- }
+            } catch (Exception e) {
+                System.err.println("Erreur lors du traitement de la ligne : " + ligne);
+                System.err.println("Cause : " + e.getMessage());
+            }
+        }
+        reader.close();
+    }
 
- public List<Parent> getParents() {
-     return parents;
- }
+    public void chargerDonneesEducateursDepuisCSV(String cheminFichier) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
+        String ligne;
+        boolean isFirstLine = true;
 
- public List<Educateur> getEducateurs() {
-     return educateurs;
- }
+        while ((ligne = reader.readLine()) != null) {
+            if (isFirstLine) {
+                isFirstLine = false;
+                continue;
+            }
+            try {
+                String[] donnees = ligne.split(",");
+                if (donnees.length < 4) {
+                    System.err.println("Ligne ignorée : nombre insuffisant de colonnes -> " + ligne);
+                    continue;
+                }
 
- public void afficherParents() {
-     System.out.println("\nListe des parents :");
-     for (Parent parent : parents) {
-         System.out.println("- Nom : " + parent.getNom() + ", Email : " + parent.getEmail() + ", Mot de passe : " + parent.getMotDePasse());
-     }
- }
+                String nomEducateur = donnees[1].trim();
+                String emailEducateur = donnees[2].trim();
+                String motDePasse = donnees[3].trim();
 
- public void afficherEducateurs() {
-     System.out.println("\nListe des éducateurs :");
-     for (Educateur educateur : educateurs) {
-         System.out.println("- Nom : " + educateur.getNom() + ", Email : " + educateur.getEmail() + ", Mot de passe : " + educateur.getMotDePasse());
-     }
- }
+                Educateur educateur = new Educateur(nomEducateur, emailEducateur, motDePasse);
+                educateurs.add(educateur);
+            } catch (Exception e) {
+                System.err.println("Erreur lors du traitement de la ligne : " + ligne);
+                System.err.println("Cause : " + e.getMessage());
+            }
+        }
+        reader.close();
+    }
+
+    public Parent trouverParentParEmail(String email) {
+        for (Parent parent : parents) {
+            if (parent.getEmail().equals(email)) {
+                return parent;
+            }
+        }
+        return null;
+    }
+
+    public Educateur trouverEducateurParEmail(String email) {
+        for (Educateur educateur : educateurs) {
+            if (educateur.getEmail().equals(email)) {
+                return educateur;
+            }
+        }
+        return null;
+    }
+
+    public List<Parent> getParents() {
+        return parents;
+    }
+
+    public List<Educateur> getEducateurs() {
+        return educateurs;
+    }
+
+    public void afficherParents() {
+        System.out.println("\nListe des parents :");
+        for (Parent parent : parents) {
+            System.out.println("- Nom : " + parent.getNom() + ", Email : " + parent.getEmail() + ", Mot de passe : " + parent.getMotDePasse());
+        }
+    }
+
+    public void afficherEducateurs() {
+        System.out.println("\nListe des éducateurs :");
+        for (Educateur educateur : educateurs) {
+            System.out.println("- Nom : " + educateur.getNom() + ", Email : " + educateur.getEmail() + ", Mot de passe : " + educateur.getMotDePasse());
+        }
+    }
 }

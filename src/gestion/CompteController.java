@@ -3,6 +3,7 @@ package gestion;
 
 import modele.Parent;
 import modele.Educateur;
+import modele.Enfant;
 
 public class CompteController {
     private DataStorage dataStorage;
@@ -40,6 +41,18 @@ public class CompteController {
         }
     }
 
+    public Parent trouverParentParEnfant(String nomEnfant) {
+        for (Parent parent : dataStorage.getParents()) {
+            for (Enfant enfant : parent.getEnfants()) {
+                if (enfant.getNom().equalsIgnoreCase(nomEnfant)) {
+                    return parent;
+                }
+            }
+        }
+        return null;
+    }
+
+    
     
     public Parent trouverParentParEmail(String email) {
         return dataStorage.trouverParentParEmail(email);

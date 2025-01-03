@@ -1,29 +1,30 @@
 package gestion;
 
-
+import modele.Enfant;
 import java.util.ArrayList;
 import java.util.List;
 
-import modele.Enfant;
-import modele.Parent;
-
-// Classe EnfantController
-//Classe EnfantController
 public class EnfantController {
- private List<Enfant> enfants = new ArrayList<>();
+    private List<Enfant> enfants;
 
- public void ajouterEnfant(Enfant enfant) {
-     enfants.add(enfant);
- }
+    public EnfantController() {
+        this.enfants = new ArrayList<>();
+    }
 
- public List<Enfant> getEnfants() {
-     return enfants;
- }
+    public void ajouterEnfant(Enfant enfant) {
+        enfants.add(enfant);
+    }
 
-public Parent trouverParentParEmail(String email) {
-	// TODO Auto-generated method stub
-	return null;
-}
+    public Enfant trouverEnfantParNom(String nom) {
+        for (Enfant enfant : enfants) {
+            if (enfant.getNom().equalsIgnoreCase(nom)) {
+                return enfant;
+            }
+        }
+        return null;
+    }
 
-
+    public List<Enfant> getEnfants() {
+        return enfants;
+    }
 }

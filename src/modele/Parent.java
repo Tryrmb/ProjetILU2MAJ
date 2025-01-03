@@ -35,4 +35,14 @@ public class Parent {
     public void ajouterEnfant(Enfant enfant) {
         enfants.add(enfant);
     }
+
+    // Recherche un enfant par son nom
+    public Enfant trouverEnfantParNom(String nomEnfant) {
+        for (Enfant enfant : enfants) {
+            if (enfant.getNom().equalsIgnoreCase(nomEnfant)) {
+                return enfant;
+            }
+        }
+        return null;
+    }
 }

@@ -4,8 +4,10 @@ package interfaceUtilisateur;
 
 import gestion.CompteController;
 import gestion.EnfantController;
+import modele.Enfant;
 import modele.Parent;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BoundaryEspaceParent {
@@ -74,8 +76,23 @@ public class BoundaryEspaceParent {
  }
 
  private void afficherBilans() {
-     System.out.println("\n--- Bilans des enfants ---");
-     // Placeholder pour les bilans (ajoutez une logique selon vos besoins)
-     System.out.println("Bilan non disponible pour le moment.");
- }
+	    System.out.println("\n--- Bilans des enfants ---");
+
+	    List<Enfant> enfants = parent.getEnfants();
+	    if (enfants.isEmpty()) {
+	        System.out.println("Aucun enfant enregistré.");
+	        return;
+	    }
+
+	    for (Enfant enfant : enfants) {
+	        System.out.println("Enfant : " + enfant.getNom());
+	        String bilan = enfant.getBilan();
+	        if (bilan.isEmpty()) {
+	            System.out.println(" - Bilan : Non disponible.");
+	        } else {
+	            System.out.println(" - Bilan : " + bilan);
+	        }
+	    }
+	}
+
 }

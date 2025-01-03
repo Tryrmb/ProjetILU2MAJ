@@ -20,8 +20,11 @@ public class UtilisateurController {
  }
 
  public void gestionEducateur(String email) {
-     BoundaryEspaceEducateur espaceEducateur = new BoundaryEspaceEducateur(email, compteController);
-     espaceEducateur.afficherMenuEducateur();
- }
+	    // Ajouter les paramètres nécessaires (par exemple : enfantController, gestionnaireIncompatibilites)
+	    GestionnaireIncompatibilité gestionnaireIncompatibilites = new GestionnaireIncompatibilité();
+	    BoundaryEspaceEducateur espaceEducateur = new BoundaryEspaceEducateur(email, compteController, enfantController, gestionnaireIncompatibilites);
+	    espaceEducateur.afficherMenuEducateur();
+	}
+
 
 }

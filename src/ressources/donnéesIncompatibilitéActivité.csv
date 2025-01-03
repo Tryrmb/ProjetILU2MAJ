@@ -1,0 +1,350 @@
+"Activité ",,"Possible allergie alimentaire ","Possible allergie respiartoire","Possible allergie cutanée ","Possible allergie piqure insecte ","Probleme de santé incompatible","Allergie Medicamenteux"
+,,,,,,,
+"Gateau Pomme",,"Vitamine A",Farine,Pomme,Aucun,Epilepsie,Chlorhexidine
+,,"Vitamine B",,,,,
+,,"Vitamine D",,Farine,,,Cicatryl
+,,"Vitamine E",,,,,
+,,"Vitamine C ",,Oeufs,,TDAH,"Biafine "
+,,"Vitamine K ",,,,,
+,,Calcium,,,,,"Fucidine "
+,,Zinc,,"Beurre ",,,
+,,Fer,"Sucre Glace",,,"Asthme severe",Dexeryl
+,,Potassium,,,,,
+,,Magnesium,,Sucre,,,
+,,Phosphore,,,,TOC,Cicalfate
+,,Ovalbumine,,"Levure Chimique",,,
+,,Gluten,,Lait,,,Hydrocortisone
+,,Lactose,,,,,
+,,Caseine,"Particules d'oeufs","Liquide vaisselle",,,
+,,Cholesterol,,,,,"Aloe Verra"
+,,Sodium,,Nickel,,,
+,,"Glucose ",,,,,
+,,Sacharose,,Desinfectant,,,
+,,Fructose,,,,,
+"Cookie aux chocolats",,"Vitamine A",Farine,Farine,Aucun,Epilepsie,Chlorhexidine
+,,"Vitamine B",,,,,
+,,"Vitamine D",,Beurre,,,Cicatryl
+,,"Vitamine C","Sucre glace",,,,
+,,"Vitamine E",,Sucre,,TDAH,"Biafine "
+,,"Vitamine K ",,,,,
+,,Calcium,"Particules d'oeufs",,,,"Fucidine "
+,,Zinc,,Oeufs,,,
+,,Fer,,,,"Asthme severe",Dexeryl
+,,Potassium,"Chocolat fondu","Extrait aromatique ",,,
+,,Phosphore,,,,,
+,,Magnesium,,"Pepite de chocolat ",,TOC,Cicalfate
+,,Ovalbumine,"Extrait aromatique",,,,
+,,Gluten,,,,,Hydrocortisone
+,,Lactose,,"Levure ",,,
+,,Caseine,"Beurre fondu",,,,
+,,Cholesterol,,Sel,,,"Aloe Verra"
+,,Sodium,,,,,
+,,Glucose,,"Liquide vaisselle",,,
+,,Sacharose,,,,,
+"Cupcake a la fraise",,"Vitamine A",Farine,Gluten,Aucun,Epilepsie,Chlorhexidine
+,,"Vitamine B",,,,,
+,,"Vitamine D",,"Caseine / Lactose",,,Cicatryl
+,,"Vitamine E","Sucre glace",,,,
+,,"Vitamine C ",,Ovulbamine,,TDAH,"Biafine "
+,,"Vitamine K ",,,,,
+,,Calcium,"Particules d'oeufs","Fraise ",,,"Fucidine "
+,,Zinc,,,,,
+,,Fer,,,,"Asthme severe",Dexeryl
+,,Potassium,"Pollen ( fraise )","Aromatisant /Colorant alimentaire ",,,
+,,Phosphore,,,,,
+,,Magnesium,,,,TOC,Cicalfate
+,,Ovalbumine,"Beurre ",Additifs,,,
+,,Gluten,,,,,Hydrocortisone
+,,Lactose,,,,,
+,,Caseine,"Aromatisant /Colorant alimentaire ",Papier,,,
+,,Cholesterol,,,,,"Aloe Verra"
+,,Sodium,,,,,
+,,Glucose,"Levure chimique ","Liquide vaisselle",,,
+,,Sacharose,,,,,
+,,Fructose,,"Plastique ",,,
+,,Carmin,,,,,
+,,Anthocyanine,,"Silicone ",,,
+"Hamburger Maison",,"Vitamine A",Farine,Pain,Aucun,Epilepsie,Chlorhexidine
+,,"Vitamine B",,,,,
+,,"Vitamine D",,Caseine,,,Cicatryl
+,,"Vitamine E","Fumée de cuisson",,,,
+,,"Vitamine C ",,Lactose,,TDAH,"Biafine "
+,,"Vitamine K ",,,,,
+,,Calcium,"Ketchup / Mayonaise /Moutarde",Oignons,,,"Fucidine "
+,,Zinc,,,,,
+,,Fer,,Ovalbumine,,"Asthme severe",Dexeryl
+,,Potassium,,,,,
+,,Magnesium,,Moutarde,,,
+,,Phosphore,"Vapeur d'huile",,,TDAH,Cicalfate
+,,Ovalbumine,,Ketchup,,,
+,,Gluten,,,,,Hydrocortisone
+,,Lactose,,,,,
+,,Caseine,,Tomates,,,
+,,Cholesterol,"Sel / Poivre / Epices",,,,"Aloe Verra"
+,,Sodium,,"Sel/ Poivre /Epices",,,
+,,"Glucose ",,,,,
+,,Enzymes,,Nickel,,,
+,,Hormones,,Desinfectant,,,
+,,"Proteine animal",,"Liquide Vaisselle",,,
+"Pizza Vegetarienne",,"Vitamine A",Farine,"Farine ",Aucun,Epilepsie,Chlorhexidine
+,,"Vitamine B",,,,,
+,,"Vitamine D",,Tomates,,,Cicatryl
+,,"Vitamine E",Pollen,,,,
+,,"Vitamine C ",,"Additifs ",,TDAH,"Biafine "
+,,"Vitamine K ",,,,,
+,,Calcium,"Sel /Poivre /Epices ",Caseine,,,"Fucidine "
+,,Zinc,,,,,
+,,Fer,,Lactose,,"Asthme severe",Dexeryl
+,,Potassium,,,,,
+,,Magnesium,"Levure chimique","Herbes fraiche",,,
+,,Phosphore,,,,TOC,Cicalfate
+,,Gluten,,"Sel / Poivre / Epices",,,
+,,Lactose,,,,,Hydrocortisone
+,,Caseine,"Vapeur d'huile",Nickel,,,
+,,Cholesterol,,,,,
+,,Sodium,,"Liquide vaisselle",,,"Aloe Verra"
+,,"Glucose ","Conservateur olives",,,,
+,,Ovalbumine,,Desinfectant,,,
+"Peinture avec les doigts",,Aucun,"Composés chimique ","Composés chimique ",Aucun,"Asthme severe",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,,,,,
+,,,,,,"Allergie respiratoire","Biafine "
+,,,Conservateurs,Conservateurs,,,
+,,,,,,,"Fucidine "
+,,,,,,,
+,,,,,,Eczema/Psoriasis,Dexeryl
+,,,,,,,
+,,,,,,,
+,,,,,,,Cicalfate
+,,,,,,Epilespie,
+,,,"Particules fines","Latex caoutchoc",,,Hydrocortisone
+,,,,,,,
+,,,,,,,
+,,,,"Allergene environnementaux",,TOC,"Aloe Verra"
+,,,,,,,
+,,,,,,,
+,,,,,,"Problemes cardiaque",
+,,,"allergènes environnementaux",,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+"Jeux d'eau sensoriels",,Aucun,Chlore,Chlore,Aucun,"Asthme severe",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,,,,,
+,,,,,,"Allergie respiratoire","Biafine "
+,,,Lavande,Lavande,,,
+,,,,,,,"Fucidine "
+,,,,,,,
+,,,,,,Eczema/Psoriasis,Dexeryl
+,,,Eucalyptus,Eucalyptus,,,
+,,,,,,,
+,,,,,,,Cicalfate
+,,,,,,Epilespie,
+,,,,,,,Hydrocortisone
+,,,,,,,
+,,,"Menthe poivrés","Menthe poivrés",,,
+,,,,,,TOC,"Aloe Verra"
+,,,,,,,
+,,,,,,,
+,,,Plantes,Plantes,,"Problemes cardiaque",
+,,,,,,,
+,,,,,,,
+"Parcours motricité",,Aucun,"Poussiere ","Poussiere ",Aucun,"Autisme severe ",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,"Pollen ","Pollen ",,,
+,,,,,,TOC,"Biafine "
+,,,,,,,
+,,,"Mousse ","Mousse ",,,"Fucidine "
+,,,,,,,
+,,,,,,"Probleme cardiaque ",Dexeryl
+,,,Plastique,Plastique,,,
+,,,,,,,
+,,,,,,,Cicalfate
+,,,Javel,Javel,,,
+,,,,,,"Blessure physique",Hydrocortisone
+,,,,,,,
+,,,Aerosol,Aerosol,,,
+,,,,,,,"Aloe Verra"
+,,,,,,"Hyperactivité ",
+,,,Humidité,Humidité,,,
+,,,,,,,
+,,,,,,,
+"Conte interactif ",,Aucun,Aucun,Aucun,Aucun,Hyperactivité,Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,,,,TOC,
+,,,,,,,"Biafine "
+,,,,,,,
+,,,,,,,"Fucidine "
+,,,,,,TDAH,
+,,,,,,,Dexeryl
+,,,,,,,
+,,,,,,,
+,,,,,,Epilepsie,Cicalfate
+,,,,,,,
+,,,,,,,Hydrocortisone
+,,,,,,"Phobie Maladive",
+,,,,,,,
+,,,,,,,"Aloe Verra"
+"Atelier pate a modeler ",,Aucun,"Pate a modeler","Pate a modeler",Aucun,"Autisme severe",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,,,,TOC,
+,,,,,,,"Biafine "
+,,,,,,,
+,,,,,,,"Fucidine "
+,,,,,,TDAH,
+,,,,,,,Dexeryl
+,,,,,,,
+,,,,,,Hyperactivité,
+,,,,,,,Cicalfate
+,,,,,,,
+,,,,,,,Hydrocortisone
+,,,,,,,"Aloe verra"
+"Chasse aux tresor nature ",,Aucun,pollen,"Plantes allergènes","abeilles, guêpes, frelons, bourdons","Troubles cardiaques",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,"Poussière et moisissures","Moisissures sur le sol ou les feuilles mortes",,"Maladies pulmonaires",
+,,,,,moustiques,,"Biafine "
+,,,,,,,
+,,,,Pollens,,Eczéma,"Fucidine "
+,,,"Poils ou squames d’animaux",,"Fourmis rouges",,
+,,,,,,,Dexeryl
+,,,,,,"Photosensibilité ou intolérance au soleil ",
+,,,,"Cartons, papiers ou plastiques",,,
+,,,"Poils ou squames d’animaux",,"Punaises et tiques",,Cicalfate
+,,,,,,Épilepsie,
+,,,,,,,Hydrocortisone
+,,,"Fumées ou poudres artificielles",latex,,,"Aloe verra"
+,,,,,"Mouches piqueuses ou taons",Autisme,
+,,,,"Paillettes / Peintures",,,
+,,,"Bulles de savon",,,,
+,,,,,,Immunodépression,
+,,,aérosols,Désinfectants,Puces,,
+,,,,,,"Diabète ",
+,,,,"Encres ou colles ",,,
+,,,,Roches,,"fatigue chronique",
+,,,,,,,
+"Construction de la cabane miniature",,Aucun,pollen,"Plantes allergènes","abeilles, guêpes, frelons, bourdons","Troubles cardiaques",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,"Poussière et moisissures","Moisissures sur le sol ou les feuilles mortes",,"Maladies pulmonaires",
+,,,,,moustiques,,"Biafine "
+,,,,,,,
+,,,,Pollens,,Eczéma,"Fucidine "
+,,,"Poils ou squames d’animaux",,"Fourmis rouges",,
+,,,,,,,Dexeryl
+,,,,,,"Photosensibilité ou intolérance au soleil ",
+,,,,"Cartons, papiers ou plastiques",,,
+,,,"Poils ou squames d’animaux",,"Punaises et tiques",,Cicalfate
+,,,,,,Épilepsie,
+,,,,,,,Hydrocortisone
+,,,"Fumées ou poudres artificielles",latex,,,"Aloe verra"
+,,,,,"Mouches piqueuses ou taons",Autisme,
+,,,,"Paillettes / Peintures",,,
+,,,"Bulles de savon",,,,
+,,,,,,Immunodépression,
+,,,aérosols,Désinfectants,Puces,,
+,,,,,,"Diabète ",
+,,,,"Encres ou colles ",,,
+,,,,Roches,,"fatigue chronique",
+,,,,,,,
+"Parcours sensoriel",,Aucun,pollen,"Plantes allergènes","abeilles, guêpes, frelons, bourdons","Troubles cardiaques",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,"Poussière et moisissures","Moisissures sur le sol ou les feuilles mortes",,"Maladies pulmonaires",
+,,,,,moustiques,,"Biafine "
+,,,,,,,
+,,,,Pollens,,Eczéma,"Fucidine "
+,,,"Poils ou squames d’animaux",,"Fourmis rouges",,
+,,,,,,,Dexeryl
+,,,,,,"Photosensibilité ou intolérance au soleil ",
+,,,,"Cartons, papiers ou plastiques",,,
+,,,"Poils ou squames d’animaux",,"Punaises et tiques",,Cicalfate
+,,,,,,Épilepsie,
+,,,,,,,Hydrocortisone
+,,,"Fumées ou poudres artificielles",latex,,,"Aloe verra"
+,,,,,"Mouches piqueuses ou taons",Autisme,
+,,,,"Paillettes / Peintures",,,
+,,,"Bulles de savon",,,,
+,,,,,,Immunodépression,
+,,,aérosols,Désinfectants,Puces,,
+,,,,,,"Diabète ",
+,,,,"Encres ou colles ",,,
+,,,,Roches,,"fatigue chronique",
+,,,,,,,
+"Comptine en plein air",,Aucun,pollen,"Plantes allergènes","abeilles, guêpes, frelons, bourdons",Hyperactivité,Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,"Poussière et moisissures","Moisissures sur le sol ou les feuilles mortes",,TOC,
+,,,,,moustiques,,"Biafine "
+,,,,,,,
+,,,,Pollens,,,"Fucidine "
+,,,"Poils ou squames d’animaux",,"Fourmis rouges",TDAH,
+,,,,,,,Dexeryl
+,,,,,,,
+,,,,"Cartons, papiers ou plastiques",,,
+,,,"Poils ou squames d’animaux",,"Punaises et tiques",Epilepsie,Cicalfate
+,,,,,,,
+,,,,,,,Hydrocortisone
+,,,"Fumées ou poudres artificielles",latex,,"Phobie Maladive","Aloe verra"
+,,,,,"Mouches piqueuses ou taons",,
+,,,,"Paillettes / Peintures",,,
+,,,"Bulles de savon",,,,
+,,,,,,,
+,,,aérosols,Désinfectants,Puces,,
+,,,,,,,
+,,,,"Encres ou colles ",,,
+,,,,Roches,,,
+,,,,,,,
+"Observation animaux et insecte ",,Aucun,pollen,"Plantes allergènes","abeilles, guêpes, frelons, bourdons","Troubles cardiaques",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,"Poussière et moisissures","Moisissures sur le sol ou les feuilles mortes",,"Maladies pulmonaires",
+,,,,,moustiques,,"Biafine "
+,,,,,,,
+,,,,Pollens,,Eczéma,"Fucidine "
+,,,"Poils ou squames d’animaux",,"Fourmis rouges",,
+,,,,,,,Dexeryl
+,,,,,,"Photosensibilité ou intolérance au soleil ",
+,,,,"Cartons, papiers ou plastiques",,,
+,,,"Poils ou squames d’animaux",,"Punaises et tiques",,Cicalfate
+,,,,,,Épilepsie,
+,,,,,,,Hydrocortisone
+,,,"Fumées ou poudres artificielles",latex,,,"Aloe verra"
+,,,,,"Mouches piqueuses ou taons",Autisme,
+,,,,"Paillettes / Peintures",,,
+,,,"Bulles de savon",,,,
+,,,,,,Immunodépression,
+,,,aérosols,Désinfectants,Puces,,
+,,,,,,"Diabète ",
+,,,,"Encres ou colles ",,,
+,,,,Roches,,"fatigue chronique",
+,,,,,,,
+"Atelier Bebe nageur ",,"chlore ",Aucun,Chlore,Aucun,"Asthme sévère",Chlorhexidine
+,,,,,,,
+,,,,,,,Cicatryl
+,,,,,,,
+,,,,,,"Maladies pulmonaires","Biafine "
+,,,,,,,
+,,,,,,,"Fucidine "
+,,"Residu alimentaire ",,,,"Insuffisance cardiaque",
+,,,,,,,Dexeryl
+,,,,,,,
+,,,,,,,
+,,,,,,,Cicalfate
+,,,,,,Épilepsie,
+,,"Bacteries / Parasite",,"Bacteries / Parasite",,,Hydrocortisone
+,,,,,,,"Aloe verra"
+,,,,,,,"Aloe verra"
+,,,,,,,"Aloe verra"
+,,,,,,"Troubles de l’équilibre","Aloe verra"
+,,,,,,,"Aloe verra"
+,,,,,,,"Aloe verra"
+,,,,,,,"Aloe verra"
+,,,,,,"Handicaps cognitifs","Aloe verra"
+,,,,,,"Fractures / Blessures","Aloe verra"
+,,,,,,,"Aloe verra"

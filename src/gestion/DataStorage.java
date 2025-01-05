@@ -7,12 +7,15 @@ import modele.Educateur;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataStorage {
-    private List<Parent> parents = new ArrayList<>();
-    private List<Educateur> educateurs = new ArrayList<>();
+    private static final int MAX_PARENTS = 100;
+    private static final int MAX_EDUCATEURS = 50;
+
+    private Parent[] parents = new Parent[MAX_PARENTS];
+    private Educateur[] educateurs = new Educateur[MAX_EDUCATEURS];
+    private int parentCount = 0;
+    private int educateurCount = 0;
     private EnfantController enfantController;
 
     public DataStorage(EnfantController enfantController) {
@@ -42,24 +45,30 @@ public class DataStorage {
                 String motDePasse = donnees[12].trim();
                 String nomEnfant = donnees[3].trim();
 
-                List<String> allergiesList = List.of(donnees[4].trim(), donnees[5].trim(), donnees[6].trim(), donnees[7].trim());
+                String[] allergiesArray = {
+                        donnees[4].trim(), donnees[5].trim(), donnees[6].trim(), donnees[7].trim()
+                };
                 String regimeAlimentaire = donnees[8].trim();
                 String problemeDeSante = donnees[9].trim();
 
                 Parent parent = trouverParentParEmail(emailParent);
                 if (parent == null) {
-                    parent = new Parent(nomParent, emailParent, motDePasse);
-                    parents.add(parent);
+                    if (parentCount < MAX_PARENTS) {
+                        parent = new Parent(nomParent, emailParent, motDePasse);
+                        parents[parentCount++] = parent;
+                    } else {
+                        System.err.println("Erreur : Limite de parents atteinte.");
+                        continue;
+                    }
                 }
 
-                Enfant enfant = new Enfant(nomEnfant, allergiesList, regimeAlimentaire);
+                Enfant enfant = new Enfant(nomEnfant, allergiesArray, regimeAlimentaire);
                 enfant.ajouterProblemeDeSante(problemeDeSante);
                 parent.ajouterEnfant(enfant);
 
                 if (enfantController != null) {
                     enfantController.ajouterEnfant(enfant);
                 }
-
             } catch (Exception e) {
                 System.err.println("Erreur lors du traitement de la ligne : " + ligne);
                 System.err.println("Cause : " + e.getMessage());
@@ -89,8 +98,12 @@ public class DataStorage {
                 String emailEducateur = donnees[2].trim();
                 String motDePasse = donnees[3].trim();
 
-                Educateur educateur = new Educateur(nomEducateur, emailEducateur, motDePasse);
-                educateurs.add(educateur);
+                if (educateurCount < MAX_EDUCATEURS) {
+                    Educateur educateur = new Educateur(nomEducateur, emailEducateur, motDePasse);
+                    educateurs[educateurCount++] = educateur;
+                } else {
+                    System.err.println("Erreur : Limite d'éducateurs atteinte.");
+                }
             } catch (Exception e) {
                 System.err.println("Erreur lors du traitement de la ligne : " + ligne);
                 System.err.println("Cause : " + e.getMessage());
@@ -99,43 +112,137 @@ public class DataStorage {
         reader.close();
     }
 
-    public Parent trouverParentParEmail(String email) {
+
+
+    public Enfant trouverEnfantParNom(String nomEnfant) {
         for (Parent parent : parents) {
-            if (parent.getEmail().equals(email)) {
-                return parent;
+            if (parent != null) {
+                for (Enfant enfant : parent.getEnfants()) {
+                    if (enfant != null && enfant.getNom().equalsIgnoreCase(nomEnfant)) {
+                        return enfant;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+ // Ajoutons des messages de debug pour mieux comprendre ce qui est stocké et recherché.
+    public Parent trouverParentParEmail(String email) {
+        for (int i = 0; i < parents.length; i++) {
+            Parent parent = parents[i];
+            if (parent != null) {
+                System.out.println("DEBUG : Recherche parent, trouvé email : " + parent.getEmail());
+                if (parent.getEmail().equals(email)) {
+                    return parent;
+                }
             }
         }
         return null;
     }
 
     public Educateur trouverEducateurParEmail(String email) {
-        for (Educateur educateur : educateurs) {
-            if (educateur.getEmail().equals(email)) {
-                return educateur;
+        for (int i = 0; i < educateurs.length; i++) {
+            Educateur educateur = educateurs[i];
+            if (educateur != null) {
+                System.out.println("DEBUG : Recherche éducateur, trouvé email : " + educateur.getEmail());
+                if (educateur.getEmail().equals(email)) {
+                    return educateur;
+                }
             }
         }
         return null;
     }
 
-    public List<Parent> getParents() {
+
+    public String[] getActivitesCompatiblesParCategorie(String categorie, Enfant enfant) {
+        String[] activitesCompatiblesTemp = new String[50];
+        int index = 0;
+
+        String[] activitesCategorie = getActivitesParCategorie(categorie);
+
+        if (activitesCategorie != null) {
+            for (String activite : activitesCategorie) {
+                if (activite != null && estCompatible(activite, enfant)) {
+                    activitesCompatiblesTemp[index++] = activite;
+                }
+            }
+        }
+
+        String[] activitesCompatibles = new String[index];
+        System.arraycopy(activitesCompatiblesTemp, 0, activitesCompatibles, 0, index);
+
+        return activitesCompatibles;
+    }
+
+    private boolean estCompatible(String activite, Enfant enfant) {
+        for (String allergie : enfant.getAllergies()) {
+            if (allergie != null && activite.toLowerCase().contains(allergie.toLowerCase())) {
+                return false;
+            }
+        }
+        for (String probleme : enfant.getProblemesDeSante()) {
+            if (probleme != null && activite.toLowerCase().contains(probleme.toLowerCase())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private String[] getActivitesParCategorie(String categorie) {
+        switch (categorie) {
+            case "Activités Culinaires":
+                return new String[]{
+                        "Gâteau aux pommes",
+                        "Cookie aux chocolats",
+                        "Cupcakes aux fraises",
+                        "Hamburger maison",
+                        "Pizza végétarienne"
+                };
+            case "Activités Récréatives":
+                return new String[]{
+                        "Peinture avec les doigts",
+                        "Jeux d'eau sensoriels",
+                        "Parcours motricité",
+                        "Conte interactif",
+                        "Atelier pâte à modeler"
+                };
+            case "Sorties en Forêt":
+                return new String[]{
+                        "Chasse aux trésors nature",
+                        "Construction cabane miniature",
+                        "Comptine en plein air",
+                        "Parcours sensoriels",
+                        "Observation animaux et insectes"
+                };
+            case "Sorties Aquatiques":
+                return new String[]{
+                        "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur"
+                };
+            default:
+                return null;
+        }
+    }
+
+    public Parent[] getParents() {
         return parents;
     }
 
-    public List<Educateur> getEducateurs() {
+    public Educateur[] getEducateurs() {
         return educateurs;
     }
 
     public void afficherParents() {
         System.out.println("\nListe des parents :");
-        for (Parent parent : parents) {
-            System.out.println("- Nom : " + parent.getNom() + ", Email : " + parent.getEmail() + ", Mot de passe : " + parent.getMotDePasse());
+        for (int i = 0; i < parentCount; i++) {
+            System.out.println("- Nom : " + parents[i].getNom() + ", Email : " + parents[i].getEmail() + ", Mot de passe : " + parents[i].getMotDePasse());
         }
     }
 
     public void afficherEducateurs() {
         System.out.println("\nListe des éducateurs :");
-        for (Educateur educateur : educateurs) {
-            System.out.println("- Nom : " + educateur.getNom() + ", Email : " + educateur.getEmail() + ", Mot de passe : " + educateur.getMotDePasse());
+        for (int i = 0; i < educateurCount; i++) {
+            System.out.println("- Nom : " + educateurs[i].getNom() + ", Email : " + educateurs[i].getEmail() + ", Mot de passe : " + educateurs[i].getMotDePasse());
         }
     }
 }

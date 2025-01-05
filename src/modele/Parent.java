@@ -1,19 +1,18 @@
 package modele;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Parent {
     private String nom;
     private String email;
     private String motDePasse;
-    private List<Enfant> enfants;
+    private Enfant[] enfants; // Tableau pour stocker les enfants
+    private int nombreEnfants; // Nombre actuel d'enfants dans le tableau
 
     public Parent(String nom, String email, String motDePasse) {
         this.nom = nom;
         this.email = email;
         this.motDePasse = motDePasse;
-        this.enfants = new ArrayList<>();
+        this.enfants = new Enfant[10]; // Taille fixe par défaut
+        this.nombreEnfants = 0;
     }
 
     public String getNom() {
@@ -28,19 +27,27 @@ public class Parent {
         return motDePasse;
     }
 
-    public List<Enfant> getEnfants() {
+    public Enfant[] getEnfants() {
         return enfants;
     }
 
-    public void ajouterEnfant(Enfant enfant) {
-        enfants.add(enfant);
+    public int getNombreEnfants() {
+        return nombreEnfants;
     }
 
-    // Recherche un enfant par son nom
+    public void ajouterEnfant(Enfant enfant) {
+        if (nombreEnfants < enfants.length) {
+            enfants[nombreEnfants] = enfant;
+            nombreEnfants++;
+        } else {
+            System.out.println("Impossible d'ajouter l'enfant : tableau plein.");
+        }
+    }
+
     public Enfant trouverEnfantParNom(String nomEnfant) {
-        for (Enfant enfant : enfants) {
-            if (enfant.getNom().equalsIgnoreCase(nomEnfant)) {
-                return enfant;
+        for (int i = 0; i < nombreEnfants; i++) {
+            if (enfants[i].getNom().equalsIgnoreCase(nomEnfant)) {
+                return enfants[i];
             }
         }
         return null;

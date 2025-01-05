@@ -43,14 +43,17 @@ public class CompteController {
 
     public Parent trouverParentParEnfant(String nomEnfant) {
         for (Parent parent : dataStorage.getParents()) {
-            for (Enfant enfant : parent.getEnfants()) {
-                if (enfant.getNom().equalsIgnoreCase(nomEnfant)) {
-                    return parent;
+            if (parent != null) {
+                for (Enfant enfant : parent.getEnfants()) {
+                    if (enfant.getNom().equalsIgnoreCase(nomEnfant)) {
+                        return parent;
+                    }
                 }
             }
         }
         return null;
     }
+
 
     
     

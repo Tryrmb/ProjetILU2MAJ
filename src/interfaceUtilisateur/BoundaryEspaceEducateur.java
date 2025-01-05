@@ -124,14 +124,14 @@ public class BoundaryEspaceEducateur {
 
     
     private void afficherActivitesParJour(String categorie, Enfant enfant) {
-        List<String> activitesCompatibles = gestionnaireIncompatibilite.getActivitesCompatiblesParCategorie(categorie, enfant);
+        String[] activitesCompatibles = gestionnaireIncompatibilite.getActivitesCompatiblesParCategorie(categorie, enfant);
 
         int index = 0;
-        List<String> jours = List.of("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi");
+        String[] jours = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
 
         for (String jour : jours) {
-            if (index < activitesCompatibles.size()) {
-                System.out.println("Activité disponible " + jour + " : " + activitesCompatibles.get(index));
+            if (index < activitesCompatibles.length) {
+                System.out.println("Activité disponible " + jour + " : " + activitesCompatibles[index]);
                 index++;
             } else {
                 System.out.println("Activité disponible " + jour + " : Aucune activité compatible.");
@@ -221,4 +221,3 @@ public class BoundaryEspaceEducateur {
         System.out.println("Le problème de santé \"" + probleme + "\" a été ajouté/modifié pour l'enfant \"" + nomEnfant + "\".");
     }
     }
-

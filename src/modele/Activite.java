@@ -1,9 +1,6 @@
 // Package : Modele
 package modele;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import enumeration.TypeActivite;
 
 /**
@@ -17,15 +14,20 @@ public abstract class Activite {
     private TypeActivite typeActivite; // Enum pour le type d'activité
 
     // Attributs pour gérer les participants et leurs informations
-    private List<String> participants = new ArrayList<>();
-    private List<String> restrictionsAlimentaires = new ArrayList<>();
-    private List<String> contactsParents = new ArrayList<>();
+    private String[] participants;
+    private String[] restrictionsAlimentaires;
+    private String[] contactsParents;
+    private int tailleMax = 50; // Taille maximale du tableau
+    private int nombreParticipants = 0; // Nombre actuel de participants
 
     // Constructeur
     public Activite(String nom, String description, TypeActivite typeActivite) {
         this.nom = nom;
         this.description = description;
         this.typeActivite = typeActivite;
+        this.participants = new String[tailleMax];
+        this.restrictionsAlimentaires = new String[tailleMax];
+        this.contactsParents = new String[tailleMax];
     }
 
     // Getters
@@ -63,9 +65,15 @@ public abstract class Activite {
      * @param contactParent  Coordonnées du parent (email ou téléphone)
      */
     public void ajouterParticipant(String enfant, String restriction, String contactParent) {
-        participants.add(enfant);
-        restrictionsAlimentaires.add(restriction);
-        contactsParents.add(contactParent);
+        if (nombreParticipants >= tailleMax) {
+            System.out.println("Erreur : Le nombre maximum de participants est atteint.");
+            return;
+        }
+
+        participants[nombreParticipants] = enfant;
+        restrictionsAlimentaires[nombreParticipants] = restriction;
+        contactsParents[nombreParticipants] = contactParent;
+        nombreParticipants++;
     }
 
     /**
@@ -73,10 +81,10 @@ public abstract class Activite {
      */
     public void afficherParticipants() {
         System.out.println("Participants de l'activité : " + nom);
-        for (int i = 0; i < participants.size(); i++) {
-            System.out.println(" - Enfant : " + participants.get(i));
-            System.out.println("   Restriction : " + restrictionsAlimentaires.get(i));
-            System.out.println("   Contact parent : " + contactsParents.get(i));
+        for (int i = 0; i < nombreParticipants; i++) {
+            System.out.println(" - Enfant : " + participants[i]);
+            System.out.println("   Restriction : " + restrictionsAlimentaires[i]);
+            System.out.println("   Contact parent : " + contactsParents[i]);
         }
     }
 
@@ -87,9 +95,8 @@ public abstract class Activite {
      */
     public void notifierParents(String message) {
         System.out.println("Envoi de notifications aux parents...");
-        for (String contact : contactsParents) {
-            System.out.println("Notification envoyée à " + contact + " : " + message);
+        for (int i = 0; i < nombreParticipants; i++) {
+            System.out.println("Notification envoyée à " + contactsParents[i] + " : " + message);
         }
     }
 }
-
